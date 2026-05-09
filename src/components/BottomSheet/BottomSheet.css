@@ -1,0 +1,120 @@
+.sheet-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(17, 24, 39, 0.25);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease;
+  z-index: 40;
+}
+
+.sheet-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sheet-panel {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background: var(--bg-white);
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+
+  border-top: 1px solid var(--border-color);
+  box-shadow: 0 -10px 30px rgba(17, 24, 39, 0.12);
+
+  transform: translate3d(0, 110%, 0);
+  transition: transform 0.2s ease;
+  will-change: transform;
+
+  z-index: 50;
+
+  display: flex;
+  flex-direction: column;
+
+  /* Ключевой фикс: высота по контенту */
+  height: auto;
+
+  /*
+    Ограничение по экрану:
+    - 85vh обычно комфортно
+    - 100dvh учитывает мобильные панели/адресную строку
+  */
+  max-height: min(85vh, calc(100dvh - 12px));
+
+  /* Чтобы скругления работали, когда контент (если вдруг) скроллится */
+  overflow: hidden;
+
+  /* Safe area для iOS */
+  padding-bottom: env(safe-area-inset-bottom);
+  width: min(560px, 100%);
+  margin: 0 auto;
+}
+
+.sheet-panel.is-open {
+  transform: translate3d(0, 0, 0);
+}
+
+.sheet-handle-area {
+  padding: 10px 0 4px;
+  display: flex;
+  justify-content: center;
+  touch-action: none;
+  cursor: grab;
+}
+
+.sheet-handle-area:active {
+  cursor: grabbing;
+}
+
+.sheet-handle {
+  width: 44px;
+  height: 5px;
+  border-radius: 999px;
+  background: rgba(156, 163, 175, 0.6);
+}
+
+.sheet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border-color);
+  touch-action: none;
+}
+
+.sheet-title {
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--text-dark);
+}
+
+.sheet-close {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-white);
+  color: var(--text-dark);
+  box-shadow: var(--shadow-sm);
+  font-weight: 900;
+}
+
+.sheet-content {
+  padding: 12px 14px 16px;
+
+  /*
+    ВАЖНО:
+    - при малом контенте скролла не будет (и это как раз то, что тебе нужно)
+    - если когда-нибудь контента станет больше max-height — скролл появится, иначе будет вылезать за экран
+  */
+  overflow: auto;
+
+  /* фикс для flex+overflow на мобильных */
+  min-height: 0;
+}

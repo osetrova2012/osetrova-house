@@ -1,0 +1,174 @@
+
+.terrain-screen {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: #fafafa;
+  font-weight: 500px;
+}
+
+/* сетка фоном */
+.terrain-grid-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  
+}
+
+/* ВАЖНО: растягиваем Grid на 100% (фикс “белой зоны” на мобиле) */
+.terrain-grid-bg .grid-container {
+  width: 100%;
+  height: 100%;
+}
+
+/* хинты поверх */
+.terrain-top-hints {
+  position: fixed;
+  left: 14px;
+  top: 86px; /* под Header */
+  z-index: 12;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  max-width: min(760px, calc(100vw - 28px));
+}
+
+.hint-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 10px 12px;
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.hint-label {
+  color: var(--text-gray);
+  font-weight: 500;
+}
+
+.hint-value {
+  color: var(--text-dark);
+}
+
+.hint-chip-issues {
+  flex: 1 1 auto;
+  min-width: 220px;
+}
+
+.issue-pill {
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.issue-ok { color: rgba(16, 185, 129, 1); }
+.issue-warning { color: rgba(245, 158, 11, 1); }
+.issue-error { color: rgba(239, 68, 68, 1); }
+
+/* ============================
+   BottomSheet content: ЗИМА
+   ============================ */
+
+.winter-sheet {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.winter-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.winter-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.winter-sotka {
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(34, 197, 94, 0.22);
+  background: rgba(34, 197, 94, 0.08);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-dark);
+  white-space: nowrap;
+}
+
+.winter-block {
+  padding: 12px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--border-color);
+  background: rgba(17, 24, 39, 0.02);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.winter-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.winter-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.winter-value {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-gray);
+}
+
+.winter-range {
+  width: 100%;
+  accent-color: var(--accent-color);
+}
+
+.winter-minmax {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-gray);
+}
+
+.winter-confirm {
+  min-height: 46px;
+  border-radius: 14px;
+  background: var(--accent-color);
+  color: white;
+  font-weight: 500;
+  box-shadow: var(--shadow-sm);
+}
+
+.winter-confirm:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+@media (max-width: 520px) {
+  .terrain-top-hints {
+    top: 78px;
+    left: 10px;
+    max-width: calc(100vw - 20px);
+  }
+}

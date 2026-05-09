@@ -1,0 +1,203 @@
+.view3d-screen {
+  position: fixed;
+  inset: 0;
+  background: #eaf2f7;
+}
+
+.view3d-canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+.view3d-back {
+  position: fixed;
+  left: 12px;
+  bottom: calc(12px + env(safe-area-inset-bottom));
+  z-index: 50;
+
+  height: 52px;          /* было 48 */
+  padding: 0 16px;       /* было 0 14 */
+  border-radius: 16px;   /* было 14 */
+
+  background: rgba(255, 255, 255, 0.12);
+  color: #000;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(10px);
+
+  font-weight: 600;     
+  font-size: 14px;       
+}
+
+.view3d-back:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+/* ===== Панель действий ===== */
+
+.view3d-panel {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  z-index: 60;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;             /* было 10 */
+
+  padding: 14px;         /* было 12 */
+  border-radius: 20px;   /* было 18 */
+
+  background: rgba(255, 255, 255, 0.10);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(12px);
+
+  pointer-events: none;
+}
+
+.view3d-panel > * {
+  pointer-events: auto;
+}
+
+.view3d-panel-row {
+  display: flex;
+  gap: 12px;            /* было 10 */
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.view3d-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;            /* было 8 */
+  padding: 12px 14px;   /* было 10 12 */
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  font-weight: 600;
+}
+
+.view3d-chip-ico-img {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.view3d-chip-text {
+  font-size: 14px;      /* было 13 */
+  line-height: 1;
+  color: #000;
+}
+
+.view3d-action {
+  height: 46px;         /* было 42 */
+  padding: 0 14px;      /* было 0 12 */
+  border-radius: 16px;  /* было 14 */
+
+  background: rgba(255, 255, 255, 0.12);
+  color: #000;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  font-weight: 600;
+  font-size: 14px;      /* было 13 */
+
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.view3d-action-ico {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.view3d-action:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.16);
+  transform: translateY(-1px);
+}
+
+.view3d-action:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* ===== DOM Loader overlay (100% по центру, всегда) ===== */
+
+.view3d-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+
+  display: grid;
+  place-items: center;
+
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(6px);
+}
+
+.view3d-loader-card {
+  width: 340px; /* чуть больше */
+  max-width: calc(100vw - 32px);
+
+  padding: 18px 20px;
+  border-radius: 18px;
+
+  background: #ffffff;
+  border: 1px solid rgba(17, 24, 39, 0.12);
+  box-shadow: 0 14px 40px rgba(17, 24, 39, 0.12);
+
+  color: #111827;
+  text-align: center;
+}
+
+.view3d-loader-title {
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: -0.2px;
+  margin-bottom: 10px;
+}
+
+.view3d-loader-bar {
+  height: 8px;
+  width: 100%;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(17, 24, 39, 0.10);
+}
+
+.view3d-loader-bar > div {
+  height: 100%;
+  width: 0%;
+  background: #111827;
+  transition: width 0.2s ease;
+}
+
+.view3d-loader-pct {
+  margin-top: 8px;
+  font-size: 12px;
+  color: rgba(17, 24, 39, 0.6);
+  font-weight: 600;
+}
+
+.view3d-loader-hint {
+  margin-top: 8px;
+  font-size: 12px;
+  color: rgba(17, 24, 39, 0.55);
+  font-weight: 600;
+}
+
+.view3d-loader-item {
+  margin-top: 8px;
+  font-size: 11px;
+  color: rgba(17, 24, 39, 0.45);
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
